@@ -4,7 +4,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
@@ -32,14 +31,14 @@ import { CreateMessageDto } from '../../dto/createMessageDto';
   styleUrl: './create-message.component.scss',
 })
 export class CreateMessageComponent {
-  selectBuyerOptions = [
-    { name: 'Please choose', value: null },
-    { name: 'BM Tech Team', value: 63 },
-  ];
   private _fb = inject(FormBuilder);
   private _appservice = inject(AppService);
 
   isSuccessFull: boolean = false;
+  selectBuyerOptions = [
+    { name: 'Please choose', value: null },
+    { name: 'BM Tech Team', value: 63 },
+  ];
 
   createMessageForm: FormGroup = this._fb.group({
     name: [null, Validators.required],

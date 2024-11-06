@@ -28,7 +28,6 @@ export class MessageComponent implements OnInit {
   private _appService = inject(AppService);
 
   messages: Message[] = [];
-
   filteredMessageList: Message[] = [];
   filterTopicName: string = '';
 
@@ -69,8 +68,7 @@ export class MessageComponent implements OnInit {
       localStorage.removeItem('filteredMessage');
       this.filteredMessageList = this.messages;
     } else {
-      localStorage.setItem('filteredMessage', this.filterTopicName);
-
+      this.updateLocalStorage();
       this.messages.filter((message) => {
         const messageName = message.name.trim().toLowerCase();
 
