@@ -1,10 +1,10 @@
-<div class="flex flex-col pdt-24">
+<div class="flex flex-col pdt-24 sm:mx-auto md:w-4/5">
   <app-filter-message
     [filterTerm]="filterTopicName"
     (filterByTopicNameChange)="onFilterTopicName($event)"
   ></app-filter-message>
 
-  <div class="grid grid-cols-4 gap-4">
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
     @for(msg of filteredMessageList; track $index){
     <app-message-list [message]="msg"></app-message-list>
     }
