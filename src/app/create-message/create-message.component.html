@@ -1,0 +1,71 @@
+<div class="">
+  <form
+    [formGroup]="createMessageForm"
+    class="max-w-sm mx-auto p-4 mt-20 shadow-sm bg-blue-50"
+  >
+    <h2 class="p-3 mx-auto mb-8 font-medium text-2xl text-center">
+      Create Message
+    </h2>
+    <div class="w-full">
+      <label class="block mb-2 text-base font-medium">Topic Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="bg-gray-50 border text-base rounded-lg block w-full p-2.5"
+      />
+    </div>
+
+    <span
+      *ngIf="createMessageForm.controls['name'].touched && createMessageForm.controls['name'].errors?.['required']"
+      class="font-light text-sm text-red-800 p-2"
+      >Topic Name field is required</span
+    >
+
+    <div class="w-full mt-3">
+      <label class="block mb-2 text-base font-medium">Select Buyer</label>
+      <select
+        name="referenceID"
+        formControlName="referenceID"
+        class="bg-gray-50 border text-base rounded-lg block w-full p-2.5"
+      >
+        @for(op of selectBuyerOptions; track $index){
+        <option value="{{ op.value }}">{{ op.name }}</option>
+        }
+      </select>
+    </div>
+    <span
+      class="font-light text-sm text-red-800 p-2"
+      *ngIf="createMessageForm.controls['referenceID'].touched && createMessageForm.controls['referenceID'].errors?.['required']"
+      >valid select Buyer field is required</span
+    >
+
+    <div class="mt-10">
+      <button
+        type="button"
+        (click)="saveForm()"
+        class="mx-auto border block rounded-full w-1/3 p-2 uppercase focus:ring-2 focus:outline-8 focus:ring-blue-300"
+        [disabled]="createMessageForm.invalid"
+        [ngClass]="
+          createMessageForm.invalid && createMessageForm.touched
+            ? 'cursor-not-allowed text-blue-600 bg-blue-200'
+            : ' bg-blue-600 text-blue-200 '
+        "
+      >
+        Submit
+      </button>
+    </div>
+
+    @if(isSuccessFull){
+    <div class="p-4 my-4 text-sm text-blue-800 rounded-lg">
+      <span class="font-medium mx-auto">Message added successfully!</span>
+    </div>
+    } @if(!isSuccessFull && (createMessageForm.invalid &&
+    createMessageForm.touched)) {
+    <div class="p-4 my-4 text-sm text-red-800 rounded-lg">
+      <span class="font-medium mx-auto"
+        >There has been an error while adding the message!</span
+      >
+    </div>
+    }
+  </form>
+</div>

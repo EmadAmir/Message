@@ -1,0 +1,22 @@
+.mat-icon{
+    color: #B7B9EA;
+    margin: 3px;
+}
+
+.box{
+    width:500px;
+    height:50px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid #c4c6d0;
+    display: flex;
+    align-items: center;
+    padding:10px;
+}
+
+.filter-topic-name:focus{
+    outline: none;
+}
+.filter-topic-name{
+    width: 100%;
+}

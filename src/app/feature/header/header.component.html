@@ -1,0 +1,19 @@
+<header class="border-b p-3 w-full shadow-sm bg-blue-600">
+  <div class="flex justify-center gap-4 mx-auto">
+    <nav
+      class="test flex my-2 gap-6 uppercase text-lg font-medium text-blue-300"
+    >
+      <a
+        [routerLink]="['/', 'Message']"
+        [ngClass]="{
+          'active-link': router.url === '/' || router.url === '/Message'
+        }"
+        >Message</a
+      >
+
+      <a [routerLink]="['Create-Message']" routerLinkActive="active-link"
+        >Create Message</a
+      >
+    </nav>
+  </div>
+</header>
